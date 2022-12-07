@@ -1,0 +1,811 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.player {
+  background-color: #181b1b;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.player .debug {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  display: none;
+}
+.player .debug .tempo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  transform: scale(0);
+}
+.player .debug .tempo.show {
+  transform: scale(1);
+}
+.player .debug .mouthes {
+  color: #fafafa;
+  font-size: 50px;
+  text-align: center;
+  font-family: monospace;
+  opacity: 1;
+}
+.player .logo {
+  width: 75%;
+  max-width: 1280px;
+  position: relative;
+}
+.player .logo svg #funincluded > g {
+  color: #FAFAFA;
+  opacity: 0.3;
+  transition: opacity 250ms ease-out, color 250ms ease-out;
+  cursor: pointer;
+}
+.player .logo svg #funincluded > g:not(.letter-active).mouth, .player .logo svg #funincluded > g .mouth:not(.active) {
+  transform: scaleY(0);
+}
+.player .logo svg #funincluded > g:hover {
+  opacity: 0.3;
+}
+.player .logo svg #funincluded > g:hover#f {
+  color: #882FF6;
+}
+.player .logo svg #funincluded > g:hover#u1 {
+  color: #F99D07;
+}
+.player .logo svg #funincluded > g:hover#n1 {
+  color: #37B6F6;
+}
+.player .logo svg #funincluded > g:hover#i {
+  color: #F9E104;
+}
+.player .logo svg #funincluded > g:hover#n2 {
+  color: #CE0000;
+}
+.player .logo svg #funincluded > g:hover#c {
+  color: #9CCF31;
+}
+.player .logo svg #funincluded > g:hover#l {
+  color: #882FF6;
+}
+.player .logo svg #funincluded > g:hover#u2 {
+  color: #F99D07;
+}
+.player .logo svg #funincluded > g:hover#d1 {
+  color: #37B6F6;
+}
+.player .logo svg #funincluded > g:hover#e {
+  color: #F9E104;
+}
+.player .logo svg #funincluded > g:hover#d2 {
+  color: #CE0000;
+}
+.player .logo svg #funincluded > g.letter-active {
+  opacity: 1;
+}
+.player .logo svg #funincluded > g.letter-active .mouth {
+  transition: transform 50ms ease-out;
+}
+.player .logo svg #funincluded > g.letter-active#f {
+  color: #882FF6;
+  animation-delay: 0s;
+  transform-origin: 3% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#f .eye {
+  transform-origin: 3.1% 19%;
+  animation: blink-eye 5s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#f .mouth {
+  transform-origin: 3.1% 30%;
+}
+.player .logo svg #funincluded > g.letter-active#f .mouth.active {
+  transform: scaleY(1.2) scaleX(0.7);
+}
+.player .logo svg #funincluded > g.letter-active#u1 {
+  color: #F99D07;
+  animation-delay: 0.2s;
+  transform-origin: 12% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#u1 .mouth {
+  transform-origin: 16% 17%;
+}
+.player .logo svg #funincluded > g.letter-active#u1 .mouth.active {
+  transform: scaleY(0.7);
+}
+.player .logo svg #funincluded > g.letter-active#u1 .eye {
+  transform-origin: 15.3% 11.1%;
+  animation: blink-eye2 7s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#n1 {
+  color: #37B6F6;
+  animation-delay: 0.4s;
+  transform-origin: 21% 42%;
+  /*.letter, .eye, .mouth{
+    transform-origin: 11% 42%;
+    animation: skewV1 5s linear infinite;
+    animation-delay: 0s;
+  }*/
+}
+.player .logo svg #funincluded > g.letter-active#n1 .eye {
+  transform-origin: 24.7% 31.4%;
+  animation: blink-eye 10s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#n1 .mouth {
+  transform-origin: 25.7% 37%;
+}
+.player .logo svg #funincluded > g.letter-active#n1 .mouth.active {
+  transform: scaleY(1);
+}
+.player .logo svg #funincluded > g.letter-active#i {
+  color: #F9E104;
+  animation-delay: 0.6s;
+  transform-origin: 34% 42%;
+  /*.letter{
+    transform: scale(0)!important;
+  }*/
+}
+.player .logo svg #funincluded > g.letter-active#i .arm:nth-child(2) {
+  animation: arm1 13s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  transform-origin: 33% 7%;
+}
+.player .logo svg #funincluded > g.letter-active#i .arm:nth-child(3) {
+  animation: arm2 5.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  transform-origin: 33% 23%;
+}
+.player .logo svg #funincluded > g.letter-active#i .mouth {
+  animation-delay: 3.5s;
+  transform-origin: 32.5% 16.1%;
+}
+.player .logo svg #funincluded > g.letter-active#i .mouth.active {
+  transform: scaleY(0.6);
+}
+.player .logo svg #funincluded > g.letter-active#i .eye {
+  transform-origin: 33.7% 12%;
+  animation: blink-eye3 6.7s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#n2 {
+  color: #CE0000;
+  animation-delay: 0.8s;
+  transform-origin: 41% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#n2 .eye {
+  transform-origin: 44.5% 14.5%;
+  animation: blink-eye 20s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#n2 .mouth {
+  transform-origin: 45.6% 17%;
+  animation: talk2 19s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#c {
+  color: #9CCF31;
+  animation-delay: 1s;
+  transform-origin: 50% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#c .mouth {
+  animation-delay: 2.5s;
+  transform-origin: 48% 27%;
+}
+.player .logo svg #funincluded > g.letter-active#c .mouth.active {
+  transform: scaleY(1);
+}
+.player .logo svg #funincluded > g.letter-active#l {
+  color: #882FF6;
+  animation-delay: 1.2s;
+  transform-origin: 59% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#l .letter, .player .logo svg #funincluded > g.letter-active#l .eye, .player .logo svg #funincluded > g.letter-active#l .mouth {
+  transform-origin: 59% 42%;
+  animation: skewH1 2s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#u2 {
+  color: #F99D07;
+  animation-delay: 1.4s;
+  transform-origin: 67% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#u2 .eye {
+  transform-origin: 64.6% 13%;
+  animation: blink-eye 7.5s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#u2 .mouth {
+  transform-origin: 62% 15.2%;
+  animation: talk1 8.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  animation-delay: 2.5s;
+}
+.player .logo svg #funincluded > g.letter-active#d1 {
+  color: #37B6F6;
+  animation-delay: 1.6s;
+  transform-origin: 76% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#d1 .eye, .player .logo svg #funincluded > g.letter-active#d1 .mouth {
+  transform-origin: 93% 43%;
+  animation: jump 6s linear infinite;
+  animation-delay: 0s;
+}
+.player .logo svg #funincluded > g.letter-active#d1 .letter {
+  transform-origin: 76% 42%;
+  animation: jump-scale 6s linear infinite;
+  animation-delay: 0s;
+}
+.player .logo svg #funincluded > g.letter-active#d1 .arm {
+  animation-delay: 0s;
+}
+.player .logo svg #funincluded > g.letter-active#d1 .arm:nth-child(2) {
+  transform-origin: 78% 19%;
+  animation: arm2 2s linear infinite alternate;
+}
+.player .logo svg #funincluded > g.letter-active#d1 .arm:nth-child(3) {
+  transform-origin: 75% 12%;
+  animation: arm2 1.5s linear infinite alternate;
+}
+.player .logo svg #funincluded > g.letter-active#e {
+  color: #F9E104;
+  animation-delay: 1.8s;
+  transform-origin: 85% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#e .mouth {
+  animation: talk1 15s linear infinite;
+  animation-delay: 3.5s;
+  transform-origin: 90% 38.5%;
+}
+.player .logo svg #funincluded > g.letter-active#e .eye {
+  transform-origin: 89% 34%;
+  animation: blink-eye3 10s linear infinite;
+}
+.player .logo svg #funincluded > g.letter-active#d2 {
+  color: #CE0000;
+  animation-delay: 2s;
+  transform-origin: 94% 42%;
+}
+.player .logo svg #funincluded > g.letter-active#d2 .letter, .player .logo svg #funincluded > g.letter-active#d2 .eye, .player .logo svg #funincluded > g.letter-active#d2 .arm {
+  transform-origin: 93% 43%;
+  animation: sleep 15s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+.player .logo .zzz {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+.player .logo .zzz.active {
+  opacity: 1;
+}
+.player .logo .zzz .z {
+  position: absolute;
+  color: #CE0000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  animation: zzz-opacity 3s ease-out infinite;
+}
+.player .logo .zzz .z .z-inner-vertical {
+  animation: zzz-vertical 3s ease-out infinite;
+}
+.player .logo .zzz .z .z-inner-vertical .z-inner-horizontal {
+  animation: zzz-horizontal 3s ease-out infinite;
+}
+.player .logo .zzz .z:nth-child(1) {
+  animation-delay: 0s;
+}
+.player .logo .zzz .z:nth-child(1) .z-inner-vertical {
+  animation-delay: 0s;
+}
+.player .logo .zzz .z:nth-child(1) .z-inner-vertical .z-inner-horizontal {
+  animation-delay: 0s;
+}
+.player .logo .zzz .z:nth-child(2) {
+  animation-delay: 1s;
+}
+.player .logo .zzz .z:nth-child(2) .z-inner-vertical {
+  animation-delay: 1s;
+}
+.player .logo .zzz .z:nth-child(2) .z-inner-vertical .z-inner-horizontal {
+  animation-delay: 1s;
+}
+.player .logo .zzz .z:nth-child(3) {
+  animation-delay: 2s;
+}
+.player .logo .zzz .z:nth-child(3) .z-inner-vertical {
+  animation-delay: 2s;
+}
+.player .logo .zzz .z:nth-child(3) .z-inner-vertical .z-inner-horizontal {
+  animation-delay: 2s;
+}
+
+@keyframes blink-eye {
+  0% {
+    transform: scaleY(1);
+  }
+  10% {
+    transform: scaleY(1);
+  }
+  12% {
+    transform: scaleY(0);
+  }
+  14% {
+    transform: scaleY(1);
+  }
+  30% {
+    transform: scaleY(1);
+  }
+  31% {
+    transform: scaleY(0);
+  }
+  32% {
+    transform: scaleY(1);
+  }
+  36% {
+    transform: scaleY(1);
+  }
+  37% {
+    transform: scaleY(0);
+  }
+  38% {
+    transform: scaleY(1);
+  }
+  60% {
+    transform: scaleY(1);
+  }
+  62% {
+    transform: scaleY(0);
+  }
+  64% {
+    transform: scaleY(1);
+  }
+  66% {
+    transform: scaleY(1);
+  }
+  68% {
+    transform: scaleY(0);
+  }
+  70% {
+    transform: scaleY(1);
+  }
+  92% {
+    transform: scaleY(1);
+  }
+  93% {
+    transform: scaleY(0);
+  }
+  94% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes blink-eye2 {
+  0% {
+    transform: scaleY(1);
+  }
+  30% {
+    transform: scaleY(1);
+  }
+  31% {
+    transform: scaleY(0);
+  }
+  32% {
+    transform: scaleY(1);
+  }
+  36% {
+    transform: scaleY(1);
+  }
+  37% {
+    transform: scaleY(0);
+  }
+  38% {
+    transform: scaleY(1);
+  }
+  92% {
+    transform: scaleY(1);
+  }
+  93% {
+    transform: scaleY(0);
+  }
+  94% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes blink-eye3 {
+  0% {
+    transform: scaleY(1);
+  }
+  30% {
+    transform: scaleY(1);
+  }
+  31% {
+    transform: scaleY(0);
+  }
+  32% {
+    transform: scaleY(1);
+  }
+  60% {
+    transform: scaleY(1);
+  }
+  62% {
+    transform: scaleY(0);
+  }
+  64% {
+    transform: scaleY(1);
+  }
+  66% {
+    transform: scaleY(1);
+  }
+  68% {
+    transform: scaleY(0);
+  }
+  70% {
+    transform: scaleY(1);
+  }
+  85% {
+    transform: scaleY(1);
+  }
+  88% {
+    transform: scaleY(0.3);
+  }
+  95% {
+    transform: scaleY(0.3);
+  }
+  98% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes talk1 {
+  0% {
+    transform: scale(1);
+  }
+  19% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1, 0.5);
+  }
+  22% {
+    transform: scale(0.5, 0.8);
+  }
+  25% {
+    transform: scale(0.8, 0.4);
+  }
+  26% {
+    transform: scale(1);
+  }
+  39% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.5, 0.4);
+  }
+  41% {
+    transform: scale(1, 0.8);
+  }
+  42% {
+    transform: scale(0.4, 1.2);
+  }
+  44% {
+    transform: scale(1, 0.8);
+  }
+  45% {
+    transform: scale(0.8, 0.6);
+  }
+  46% {
+    transform: scale(1);
+  }
+  64% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(0.5, 0.4);
+  }
+  67% {
+    transform: scale(1, 1.5);
+  }
+  72% {
+    transform: scale(0.8, 0.6);
+  }
+  74% {
+    transform: scale(0.8);
+  }
+  76% {
+    transform: scale(0.8, 0.4);
+  }
+  79% {
+    transform: scale(0.8, 1);
+  }
+  81% {
+    transform: scale(0.6, 0.2);
+  }
+  84% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1);
+  }
+  93% {
+    transform: scale(0.5, 1.4);
+  }
+  99% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes talk2 {
+  0% {
+    transform: scale(1);
+  }
+  9% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.5, 1);
+  }
+  12% {
+    transform: scale(1, 0.6);
+  }
+  15% {
+    transform: scale(0.4, 0.8);
+  }
+  16% {
+    transform: scale(1);
+  }
+  49% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.4, 0.2);
+  }
+  51% {
+    transform: scale(0.6, 0.4);
+  }
+  52% {
+    transform: scale(1, 0.8);
+  }
+  54% {
+    transform: scale(1, 1.3);
+  }
+  55% {
+    transform: scale(0.6, 0.8);
+  }
+  56% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1);
+  }
+  93% {
+    transform: scale(0.5, 1.4);
+  }
+  99% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes arm1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(23deg);
+  }
+  75% {
+    transform: rotate(-12deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes arm2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes sleep {
+  0% {
+    transform: scaleY(1);
+  }
+  45% {
+    transform: scaleY(1.1);
+  }
+  75% {
+    transform: scaleY(0.95);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  43% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-30px);
+  }
+  47% {
+    transform: translateY(0);
+  }
+  48% {
+    transform: translateY(0);
+  }
+  49% {
+    transform: translateY(0);
+  }
+  53% {
+    transform: translateY(0);
+  }
+  55% {
+    transform: translateY(-30px);
+  }
+  57% {
+    transform: translateY(0);
+  }
+  58% {
+    transform: translateY(0);
+  }
+  59% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes jump-scale {
+  0% {
+    transform: translateY(0) scaleY(1);
+  }
+  43% {
+    transform: translateY(0) scaleY(1);
+  }
+  45% {
+    transform: translateY(-30px) scaleY(1.05);
+  }
+  47% {
+    transform: translateY(0) scaleY(1);
+  }
+  48% {
+    transform: translateY(0) scaleY(0.95);
+  }
+  49% {
+    transform: translateY(0) scaleY(1);
+  }
+  53% {
+    transform: translateY(0) scaleY(1);
+  }
+  55% {
+    transform: translateY(-30px) scaleY(1.05);
+  }
+  57% {
+    transform: translateY(0) scaleY(1);
+  }
+  58% {
+    transform: translateY(0) scaleY(0.95);
+  }
+  59% {
+    transform: translateY(0) scaleY(1);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes skewV1 {
+  0% {
+    transform: skewY(0);
+  }
+  43% {
+    transform: skewY(0);
+  }
+  45% {
+    transform: skewY(-5deg);
+  }
+  47% {
+    transform: skewY(0);
+  }
+  48% {
+    transform: skewY(0);
+  }
+  49% {
+    transform: skewY(0);
+  }
+  83% {
+    transform: skewY(0);
+  }
+  85% {
+    transform: skewY(-8deg);
+  }
+  87% {
+    transform: skewY(0);
+  }
+  88% {
+    transform: skewY(0);
+  }
+  89% {
+    transform: skewY(0);
+  }
+  100% {
+    transform: skewY(0);
+  }
+}
+@keyframes skewH1 {
+  0% {
+    transform: skewX(0);
+  }
+  25% {
+    transform: skewX(-4deg);
+  }
+  50% {
+    transform: skewX(0deg);
+  }
+  75% {
+    transform: skewX(2deg);
+  }
+  100% {
+    transform: skewX(0);
+  }
+}
+@keyframes zzz-vertical {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes zzz-horizontal {
+  0% {
+    transform: translateX(5px);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(15px);
+  }
+}
+@keyframes zzz-opacity {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
